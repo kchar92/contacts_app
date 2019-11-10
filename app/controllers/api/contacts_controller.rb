@@ -14,4 +14,15 @@ class Api::ContactsController < ApplicationController
     render 'contact_index.json.jb'
   end
 
+  def create
+    @contact = Contact.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      phone_number: params[:phone_number],
+      email: params[:email]
+    )
+    @contact.save
+    render 'contact_index.json.jb'
+  end
+
 end
