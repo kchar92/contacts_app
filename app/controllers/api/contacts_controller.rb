@@ -16,7 +16,8 @@ class Api::ContactsController < ApplicationController
       middle_name: params[:middle_name],
       last_name: params[:last_name],
       phone_number: params[:phone_number],
-      email: params[:email]
+      email: params[:email],
+      bio: params[:bio]
     )
     @contact.save
     render 'contact_index.json.jb'
