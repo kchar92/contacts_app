@@ -9,5 +9,5 @@
   bio: contact.bio,
   lat: contact.latitude,
   lng: contact.longitude,
-  # updated_at: contact.friendly_updated_at
+  updated_at: contact.friendly_updated_at
 }

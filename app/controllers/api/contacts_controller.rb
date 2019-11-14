@@ -11,11 +11,11 @@ class Api::ContactsController < ApplicationController
     render 'contact_index.json.jb'
   end
   def create
-    # address = params[:address]
-    # coordinates = Geocoder.coordinates(address)
+    address = params[:address]
+    coordinates = Geocoder.coordinates(address)
     
-    # latitude = coordinates[0]
-    # longitude = coordinates[1]
+    latitude = coordinates[0]
+    longitude = coordinates[1]
 
     @contact = Contact.new(
       first_name: params[:first_name],
@@ -24,8 +24,8 @@ class Api::ContactsController < ApplicationController
       phone_number: params[:phone_number],
       email: params[:email],
       bio: params[:bio],
-      # latitude: latitude,
-      # longitude: longitude
+      latitude: latitude,
+      longitude: longitude
     )
     if @contact.save
       render 'contact_index.json.jb'
@@ -43,7 +43,6 @@ class Api::ContactsController < ApplicationController
     @contact.phone_number = params[:phone_number] || @contact.phone_number
     @contact.email = params[:email] || @contact.email
     @contact.bio = params[:bio] || @contact.bio
-
     if @contact.save
       render 'contact_index.json.jb'
     else
