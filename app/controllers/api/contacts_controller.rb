@@ -1,8 +1,11 @@
 class Api::ContactsController < ApplicationController
   def index
-    @contacts = Contact.all
-
-    render 'contacts_index.json.jb'
+    if current_user
+      @contacts = current_user.contacts
+      render 'contacts_index.json.jb'
+    else
+      render json: []
+    end
   end
   def show
     contact_id = params[:id]
