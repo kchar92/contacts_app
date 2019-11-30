@@ -28,7 +28,8 @@ class Api::ContactsController < ApplicationController
       email: params[:email],
       bio: params[:bio],
       latitude: latitude,
-      longitude: longitude
+      longitude: longitude,
+      user_id: current_user.id
     )
     if @contact.save
       render 'contact_index.json.jb'
